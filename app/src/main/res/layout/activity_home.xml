@@ -43,7 +43,8 @@
         android:background="@drawable/search_bg"
         android:padding="15dp"
         android:layout_marginHorizontal="20dp"
-        android:clickable="false"/>
+        android:clickable="false"
+        android:focusable="false"/>
 
     <ImageView
         android:id="@+id/bannerImg"
@@ -195,12 +196,14 @@
         </com.google.android.material.bottomappbar.BottomAppBar>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnCart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:src="@drawable/shopping_cart"
             android:backgroundTint="?colorPrimary"
-            app:backgroundTint="@color/white"/>
+            app:backgroundTint="?colorPrimary"
+            android:layout_marginBottom="20dp" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </RelativeLayout>
