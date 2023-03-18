@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:layout_weight="1">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".9">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/background_intro" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="497dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/logo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="25dp"
+                android:text="FDelivery"
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                android:textColor="#070B22"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="220dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/logo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="Food Delivery App"
+                android:textColor="#040C3C"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </FrameLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".1"
+        android:layout_gravity="center"
+        android:layout_margin="25dp"
+        android:background="@drawable/btn_bg"
+        android:gravity="center"
+        android:text="Get Started"
+        android:textSize="25sp" />
+
+
+</LinearLayout>
