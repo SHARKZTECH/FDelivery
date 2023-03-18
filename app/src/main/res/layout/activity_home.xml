@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hi Sharkz"
+        android:textColor="?colorPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"/>
+    <TextView
+        android:id="@+id/name"
+        android:layout_below="@id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Oder &amp; Eat"
+        android:textSize="20sp"
+        android:layout_marginLeft="20dp"/>
+    <ImageView
+        android:id="@+id/userProfile"
+        android:layout_alignParentRight="true"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/profile"
+        android:layout_margin="20dp"/>
+
+    <EditText
+        android:id="@+id/search"
+        android:layout_below="@id/userProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/search"
+        android:drawablePadding="10dp"
+        android:hint="Find your Food"
+        android:background="@drawable/search_bg"
+        android:padding="15dp"
+        android:layout_marginHorizontal="20dp"
+        android:clickable="false"/>
+
+    <ImageView
+        android:id="@+id/bannerImg"
+        android:layout_below="@id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/image_banner"
+        android:background="@drawable/btn_bg"
+        android:layout_margin="20dp"/>
+
+    <TextView
+        android:id="@+id/category"
+        android:layout_below="@id/bannerImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Categories"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerCat"
+        android:layout_below="@id/category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/popular"
+        android:layout_below="@id/recyclerCat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Popular"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerPop"
+        android:layout_below="@id/popular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+<!--    <LinearLayout-->
+<!--        android:layout_below="@id/recyclerPop"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/home_icon"/>-->
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/baseline_person"/>-->
+<!--    </LinearLayout>-->
+</RelativeLayout>
