@@ -33,9 +33,8 @@ public class HomeActivity extends AppCompatActivity {
         getItems();
     }
     private void getItems(){
-        items.add(new Item("test 1",1.22,R.drawable.pizza));
-        items.add(new Item("test 2",1.33,R.drawable.pizza));
-        items.add(new Item("test 3",1.44,R.drawable.pizza));
-
+        items.add(new Item("Pepperoni Pizza",8.78,R.drawable.pop_1));
+        items.add(new Item("Cheese Burger",9.87,R.drawable.pop_2));
+        items.add(new Item("Vegetable Pizza",8.5,R.drawable.pop_3));
     }
 }
