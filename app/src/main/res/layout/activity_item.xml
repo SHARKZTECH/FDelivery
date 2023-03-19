@@ -28,7 +28,7 @@
     <ImageView
         android:id="@+id/itemImg"
         android:layout_width="match_parent"
-        android:layout_height="338dp"
+        android:layout_height="230dp"
         android:src="@drawable/pizza" />
     <LinearLayout
         android:layout_width="match_parent"
@@ -58,11 +58,9 @@
         android:id="@+id/desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Slice perpeepernoi,mozzarella chesse
-        fresh oregano, groung black pepper pizza sauce"
+        android:text="Slice perpeepernoi,mozzarella chessen fresh oregano, groung black pepper pizza sauce"
         android:layout_margin="20dp"
         android:layout_marginBottom="0dp"
-        android:textColor="@color/black"
         android:textSize="15sp"
         android:maxLines="6"
         android:lines="6"/>
