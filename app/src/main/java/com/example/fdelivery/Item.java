@@ -1,5 +1,8 @@
 package com.example.fdelivery;
 
+import com.google.gson.annotations.SerializedName;
+
+
 public class Item {
     private String name;
     private double price;

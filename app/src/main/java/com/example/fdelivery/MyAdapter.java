@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.zip.Inflater;
 
@@ -36,6 +38,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
       holder.nameView.setText(item.getName());
       holder.priceView.setText("$"+item.getPrice());
+      Glide.with(holder.imageView.getContext()).load(item.getImage()).into(holder.imageView);
 
       holder.addBtn.setOnClickListener(view -> {
           Intent intent=new Intent(context,ItemActivity.class);

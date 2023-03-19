@@ -36,8 +36,15 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.MyViewHolder> {
         Cat cat=cats.get(position);
         switch (position){
             case 0:
-                holder.linearLayout.setBackground(context.getDrawable(R.drawable.search_bg));
-
+                holder.linearLayout.setBackground(context.getDrawable(R.drawable.cat1_bg));
+            case 1:
+                holder.linearLayout.setBackground(context.getDrawable(R.drawable.cat2_bg));
+            case 2:
+                holder.linearLayout.setBackground(context.getDrawable(R.drawable.cat3_bg));
+            case 3:
+                holder.linearLayout.setBackground(context.getDrawable(R.drawable.cat4_bg));
+            case 4:
+                holder.linearLayout.setBackground(context.getDrawable(R.drawable.cat5_bg));
         }
         holder.textView.setText(cat.getName());
         Glide.with(holder.itemView.getContext()).load(cat.getImg()).into(holder.imageView);
