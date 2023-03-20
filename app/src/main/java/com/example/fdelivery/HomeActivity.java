@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.LinearLayout;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -16,6 +19,7 @@ public class HomeActivity extends AppCompatActivity {
     MyAdapter myAdapter;
     ArrayList<Cat> cats;
     CatAdapter catAdapter;
+    FloatingActionButton btnCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +28,15 @@ public class HomeActivity extends AppCompatActivity {
 
         items=new ArrayList<>();
         cats=new ArrayList<>();
+
         popular=findViewById(R.id.recyclerPop);
         category=findViewById(R.id.recyclerCat);
+        btnCart=findViewById(R.id.btnCart);
+
+        btnCart.setOnClickListener(view -> {
+            Intent i=new Intent(this,CartActivity.class);
+            startActivity(i);
+        });
 
 
 
