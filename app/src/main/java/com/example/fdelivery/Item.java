@@ -1,9 +1,9 @@
 package com.example.fdelivery;
 
-import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 
-public class Item {
+public class Item implements Serializable {
     private String name;
     private double price;
     private int image;

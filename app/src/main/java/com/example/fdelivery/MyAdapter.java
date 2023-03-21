@@ -2,6 +2,7 @@ package com.example.fdelivery;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
       holder.addBtn.setOnClickListener(view -> {
           Intent intent=new Intent(context,ItemActivity.class);
+          intent.putExtra("item",item);
           context.startActivity(intent);
       });
     }
