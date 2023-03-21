@@ -11,16 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.fdelivery.db.CartItem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> {
     Context context;
-    ArrayList<Item> items;
+    List<CartItem> cartItems;
 
-    public CartAdapter(Context context, ArrayList<Item> items) {
+    public CartAdapter(Context context, List<CartItem> cartItems) {
         this.context = context;
-        this.items = items;
+        this.cartItems = cartItems;
     }
 
     @NonNull
@@ -33,15 +35,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Item item=items.get(position);
-        holder.nameView.setText(item.getName());
-        holder.priceView.setText("$"+item.getPrice());
-        Glide.with(holder.itemView.getContext()).load(item.getImage()).into(holder.imageView);
+        CartItem cartItem=cartItems.get(position);
+        holder.nameView.setText(cartItem.name);
+        holder.priceView.setText("$"+cartItem.price);
+        Glide.with(holder.itemView.getContext()).load(cartItem.image).into(holder.imageView);
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return cartItems.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

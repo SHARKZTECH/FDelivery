@@ -8,6 +8,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.fdelivery.db.AppDb;
+import com.example.fdelivery.db.CartItem;
 
 public class ItemActivity extends AppCompatActivity {
     ImageView imageView,btnPlus,btnMin;
@@ -46,7 +48,16 @@ public class ItemActivity extends AppCompatActivity {
         });
 
         btnAdd.setOnClickListener(view -> {
+            AppDb db=AppDb.getInstance(this.getApplicationContext());
+            CartItem cartItem=new CartItem();
+            cartItem.name=item.getName();
+            cartItem.price=item.getPrice();
+            cartItem.count=count;
+            cartItem.image=item.getImage();
+
+            db.cartItemDao().addCartItem(cartItem);
             Toast.makeText(this, "Added to Cart Successfully!", Toast.LENGTH_SHORT).show();
+            finish();
         });
 
     }
