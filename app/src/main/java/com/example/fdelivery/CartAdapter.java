@@ -49,23 +49,26 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         holder.tPriceView.setText("$"+Math.round(cartItem.count*cartItem.price));
 
         holder.btnMin.setOnClickListener(view -> {
-            if(cartItem.count>1){
-                AppDb db=AppDb.getInstance(context);
-                CartItem cartItem1=new CartItem();
-                cartItem1.name=cartItem.name;
-                cartItem1.price=cartItem.price;
-                cartItem1.image=cartItem.image;
-                cartItem1.uid=cartItem.uid;
-                cartItem1.count=cartItem.count-1;
-                db.cartItemDao().updateCartItem(cartItem1);
-                notifyDataSetChanged();
+            if(onClickListener!=null){
+                onClickListener.onClick("min",cartItem);
             }
-            holder.itemCount.setText(String.valueOf(cartItem.count));
-            holder.tPriceView.setText("$"+Math.round(cartItem.count*cartItem.price));
+//            if(cartItem.count>1){
+//                AppDb db=AppDb.getInstance(context);
+//                CartItem cartItem1=new CartItem();
+//                cartItem1.name=cartItem.name;
+//                cartItem1.price=cartItem.price;
+//                cartItem1.image=cartItem.image;
+//                cartItem1.uid=cartItem.uid;
+//                cartItem1.count=cartItem.count-1;
+//                db.cartItemDao().updateCartItem(cartItem1);
+//                notifyDataSetChanged();
+//            }
+//            holder.itemCount.setText(String.valueOf(cartItem.count));
+//            holder.tPriceView.setText("$"+Math.round(cartItem.count*cartItem.price));
         });
         holder.btnPlus.setOnClickListener(view -> {
             if(onClickListener!=null){
-                onClickListener.onClick(position,cartItem);
+                onClickListener.onClick("add",cartItem);
             }
 //            AppDb db=AppDb.getInstance(context);
 //            CartItem cartItem1=new CartItem();
@@ -92,7 +95,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
     }
 
     public interface onClickListener{
-        void onClick(int pos,CartItem cartItem);
+        void onClick(String btn,CartItem cartItem);
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView,btnMin,btnPlus;

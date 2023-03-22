@@ -39,16 +39,28 @@ public class CartActivity extends AppCompatActivity {
 
         cartAdapter.setOnClickListener(new CartAdapter.onClickListener() {
             @Override
-            public void onClick(int pos, CartItem cartItem) {
+            public void onClick(String btn, CartItem cartItem) {
             AppDb db=AppDb.getInstance(getApplicationContext());
             CartItem cartItem1=new CartItem();
-            cartItem1.name=cartItem.name;
-            cartItem1.price=cartItem.price;
-            cartItem1.image=cartItem.image;
-            cartItem1.uid=cartItem.uid;
-            cartItem1.count=cartItem.count+1;
-            db.cartItemDao().updateCartItem(cartItem1);
-            cartAdapter.notifyDataSetChanged();
+            if(btn.equals("add")){
+                cartItem1.name=cartItem.name;
+                cartItem1.price=cartItem.price;
+                cartItem1.image=cartItem.image;
+                cartItem1.uid=cartItem.uid;
+                cartItem1.count=cartItem.count+1;
+                db.cartItemDao().updateCartItem(cartItem1);
+                cartAdapter.notifyDataSetChanged();
+            }else {
+                if(cartItem.count>1){
+                    cartItem1.name=cartItem.name;
+                    cartItem1.price=cartItem.price;
+                    cartItem1.image=cartItem.image;
+                    cartItem1.uid=cartItem.uid;
+                    cartItem1.count=cartItem.count-1;
+                    db.cartItemDao().updateCartItem(cartItem1);
+                    cartAdapter.notifyDataSetChanged();
+                }
+            }
 
             getItems();
             cartAdapter.setCartItems(cartItems);
