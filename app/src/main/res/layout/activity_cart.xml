@@ -163,7 +163,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight=".2"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginRight="100dp">
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -235,6 +236,7 @@
             android:src="@drawable/shopping_cart"
             android:backgroundTint="?colorPrimary"
             app:backgroundTint="?colorPrimary"
-            android:layout_marginBottom="20dp" />
+            android:layout_marginBottom="20dp"
+            app:layout_anchor="@id/app_bar"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </RelativeLayout>

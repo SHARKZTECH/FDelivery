@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ public class CartActivity extends AppCompatActivity {
     TextView tItems,delivery,tax,total;
     int taxV=0;
     int totalItem=0;
+    LinearLayout btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,11 @@ public class CartActivity extends AppCompatActivity {
         delivery=findViewById(R.id.deliveryValue);
         tax=findViewById(R.id.taxValue);
         total=findViewById(R.id.totalValue);
+        btnHome=findViewById(R.id.btnHome);
+
+        btnHome.setOnClickListener(view -> {
+            startActivity(new Intent(this,HomeActivity.class));
+        });
 
         cartAdapter=new CartAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

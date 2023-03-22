@@ -2,6 +2,7 @@ package com.example.fdelivery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteConstraintException;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -13,7 +14,7 @@ import com.example.fdelivery.db.AppDb;
 import com.example.fdelivery.db.CartItem;
 
 public class ItemActivity extends AppCompatActivity {
-    ImageView imageView,btnPlus,btnMin;
+    ImageView imageView,btnPlus,btnMin,btnBack;
     TextView nameView,priceView,descView,btnAdd,itemCount;
     int count;
     @Override
@@ -29,6 +30,11 @@ public class ItemActivity extends AppCompatActivity {
         itemCount=findViewById(R.id.itemCount);
         btnPlus=findViewById(R.id.btnPlus);
         btnAdd=findViewById(R.id.btnAdd);
+        btnBack=findViewById(R.id.btnBack);
+
+        btnBack.setOnClickListener(view -> {
+            startActivity(new Intent(this,HomeActivity.class));
+        });
 
         count=1;
         Item item= (Item) getIntent().getSerializableExtra("item");

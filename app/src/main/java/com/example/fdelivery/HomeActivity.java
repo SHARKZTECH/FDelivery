@@ -20,6 +20,7 @@ public class HomeActivity extends AppCompatActivity {
     ArrayList<Cat> cats;
     CatAdapter catAdapter;
     FloatingActionButton btnCart;
+    LinearLayout btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,11 @@ public class HomeActivity extends AppCompatActivity {
         popular=findViewById(R.id.recyclerPop);
         category=findViewById(R.id.recyclerCat);
         btnCart=findViewById(R.id.btnCart);
+        btnHome=findViewById(R.id.btnHome);
+
+        btnHome.setOnClickListener(view -> {
+            startActivity(new Intent(this,HomeActivity.class));
+        });
 
         btnCart.setOnClickListener(view -> {
             Intent i=new Intent(this,CartActivity.class);
