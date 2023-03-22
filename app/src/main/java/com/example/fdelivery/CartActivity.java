@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,19 +69,31 @@ public class CartActivity extends AppCompatActivity {
                     cartAdapter.notifyDataSetChanged();
                 }
             }
-            getItems();
+            cartItems.clear();
+             getItems();
             cartAdapter.setCartItems(cartItems);
+            setValues();
             }
         });
 
-        for (CartItem cartItem:cartItems){
-            taxV+= (int) Math.round(cartItem.price*cartItem.count*.10);
-            totalItem+=Math.round(cartItem.price*cartItem.count);
-        }
-        tax.setText("$"+taxV);
-        tItems.setText("$"+totalItem);
-        total.setText("$"+(taxV+totalItem+10));
-
+     setValues();
+    }
+    private void setValues(){
+        final Handler handler=new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                taxV=0;
+                totalItem=0;
+                for (CartItem cartItem:cartItems){
+                    taxV+= (int) Math.round(cartItem.price*cartItem.count*.10);
+                    totalItem+=Math.round(cartItem.price*cartItem.count);
+                }
+                tax.setText("$"+taxV);
+                tItems.setText("$"+totalItem);
+                total.setText("$"+(taxV+totalItem+10));
+            }
+        });
     }
     private void getItems() {
         AppDb db=AppDb.getInstance(this.getApplicationContext());
