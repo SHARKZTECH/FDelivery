@@ -1,11 +1,13 @@
 package com.example.fdelivery.db;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
-@Entity
+@Entity(indices ={@Index(value ="name",unique = true)})
 public class CartItem implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
@@ -18,7 +20,5 @@ public class CartItem implements Serializable {
     public int image;
     @ColumnInfo(name = "count")
     public int count;
-
-
 
 }

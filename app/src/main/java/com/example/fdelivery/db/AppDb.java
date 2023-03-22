@@ -6,7 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = CartItem.class,version = 1)
+@Database(entities = CartItem.class,version = 2)
 public abstract class AppDb extends RoomDatabase {
     public abstract CartItemDao cartItemDao();
 

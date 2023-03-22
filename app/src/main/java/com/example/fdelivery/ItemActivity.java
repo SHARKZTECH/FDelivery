@@ -2,6 +2,7 @@ package com.example.fdelivery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.sqlite.SQLiteConstraintException;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -55,8 +56,12 @@ public class ItemActivity extends AppCompatActivity {
             cartItem.count=count;
             cartItem.image=item.getImage();
 
-            db.cartItemDao().addCartItem(cartItem);
-            Toast.makeText(this, "Added to Cart Successfully!", Toast.LENGTH_SHORT).show();
+            try {
+                db.cartItemDao().addCartItem(cartItem);
+                Toast.makeText(this, "Added to Cart Successfully!", Toast.LENGTH_SHORT).show();
+            }catch (SQLiteConstraintException e){
+                Toast.makeText(this, "Exist in cart already!", Toast.LENGTH_SHORT).show();
+            }
             finish();
         });
 
