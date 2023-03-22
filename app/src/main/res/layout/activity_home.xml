@@ -53,14 +53,17 @@
         android:clickable="false"
         android:focusable="false"/>
 
-    <ImageView
-        android:id="@+id/bannerImg"
-        android:layout_below="@id/search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/image_banner"
-        android:background="@drawable/btn_bg"
-        android:layout_margin="20dp"/>
+         <ImageView
+             android:id="@+id/bannerImg"
+             android:layout_below="@id/search"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:src="@drawable/image_banner"
+             android:background="@drawable/btn_bg"
+             android:layout_margin="20dp"/>
+
+
+
 
     <TextView
         android:id="@+id/category"
@@ -69,7 +72,8 @@
         android:layout_height="wrap_content"
         android:text="Categories"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerCat"
         android:layout_below="@id/category"
@@ -83,7 +87,8 @@
         android:layout_height="wrap_content"
         android:text="Popular"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerPop"
         android:layout_below="@id/popular"
