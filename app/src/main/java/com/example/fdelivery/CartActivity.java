@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fdelivery.db.AppDb;
@@ -19,7 +21,9 @@ public class CartActivity extends AppCompatActivity {
     CartAdapter cartAdapter;
     RecyclerView recyclerView;
     List<CartItem> cartItems;
-
+    TextView tItems,delivery,tax,total;
+    int taxV=0;
+    int totalItem=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +32,10 @@ public class CartActivity extends AppCompatActivity {
 
         items=new ArrayList<>();
         recyclerView=findViewById(R.id.recyclerCart);
-
+        tItems=findViewById(R.id.totalItemsValue);
+        delivery=findViewById(R.id.deliveryValue);
+        tax=findViewById(R.id.taxValue);
+        total=findViewById(R.id.totalValue);
 
         cartAdapter=new CartAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -61,11 +68,18 @@ public class CartActivity extends AppCompatActivity {
                     cartAdapter.notifyDataSetChanged();
                 }
             }
-
             getItems();
             cartAdapter.setCartItems(cartItems);
             }
         });
+
+        for (CartItem cartItem:cartItems){
+            taxV+= (int) Math.round(cartItem.price*cartItem.count*.10);
+            totalItem+=Math.round(cartItem.price*cartItem.count);
+        }
+        tax.setText("$"+taxV);
+        tItems.setText("$"+totalItem);
+        total.setText("$"+(taxV+totalItem+10));
 
     }
     private void getItems() {
