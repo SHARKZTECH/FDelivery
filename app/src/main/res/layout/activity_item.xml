@@ -69,8 +69,8 @@
         android:layout_margin="20dp"
         android:layout_marginBottom="0dp"
         android:textSize="15sp"
-        android:maxLines="6"
-        android:lines="6"/>
+        android:maxLines="5"
+        android:lines="5"/>
 
     <TextView
         android:id="@+id/btnAdd"
