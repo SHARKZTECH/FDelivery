@@ -1,6 +1,7 @@
 package com.example.fdelivery;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +20,7 @@ public class CartActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     List<CartItem> cartItems;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,11 +29,31 @@ public class CartActivity extends AppCompatActivity {
         items=new ArrayList<>();
         recyclerView=findViewById(R.id.recyclerCart);
 
-        getItems();
 
-        cartAdapter=new CartAdapter(this,cartItems);
+        cartAdapter=new CartAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(cartAdapter);
+
+        getItems();
+        cartAdapter.setCartItems(cartItems);
+
+        cartAdapter.setOnClickListener(new CartAdapter.onClickListener() {
+            @Override
+            public void onClick(int pos, CartItem cartItem) {
+            AppDb db=AppDb.getInstance(getApplicationContext());
+            CartItem cartItem1=new CartItem();
+            cartItem1.name=cartItem.name;
+            cartItem1.price=cartItem.price;
+            cartItem1.image=cartItem.image;
+            cartItem1.uid=cartItem.uid;
+            cartItem1.count=cartItem.count+1;
+            db.cartItemDao().updateCartItem(cartItem1);
+            cartAdapter.notifyDataSetChanged();
+
+            getItems();
+            cartAdapter.setCartItems(cartItems);
+            }
+        });
 
     }
     private void getItems() {
@@ -39,7 +61,6 @@ public class CartActivity extends AppCompatActivity {
         cartItems= (List<CartItem>) db.cartItemDao().getAllCartItems();
 //        cartAdapter.notifyDataSetChanged();
 
-        Toast.makeText(this, cartItems.get(0).name, Toast.LENGTH_SHORT).show();
         items.add(new Item("Pepperoni Pizza", 8.78, R.drawable.pop_1));
         items.add(new Item("Cheese Burger", 9.87, R.drawable.pop_2));
         items.add(new Item("Vegetable Pizza", 8.5, R.drawable.pop_3));
